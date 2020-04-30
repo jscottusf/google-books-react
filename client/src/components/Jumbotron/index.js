@@ -1,13 +1,8 @@
-import React from "react";
+import React from 'react';
 
-function Jumbotron({ children }) {
+function Jumbotron(props) {
   return (
-    <div
-      style={{ height: 300, clear: "both", paddingTop: 120, textAlign: "center" }}
-      className="jumbotron"
-    >
-      {children}
-    </div>
+    <div className="jumbotron jumbotron-fluid bg-dark text-white" {...props} />
   );
 }
 
