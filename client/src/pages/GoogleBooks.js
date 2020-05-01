@@ -5,12 +5,15 @@ import Grid from '../components/Grid';
 import SearchBar from '../components/SearchBar';
 import BookCard from '../components/BookCard';
 import API from '../utils/API';
+import Alert from '../components/Alert';
 
 class GoogleBooks extends Component {
   state = {
     search: '',
     books: [],
     error: '',
+    added: false,
+    failed: false,
   };
 
   handleInputChange = event => {
@@ -30,6 +33,18 @@ class GoogleBooks extends Component {
         this.setState({ books: res.data.items, error: '' });
       })
       .catch(err => this.setState({ error: err.message }));
+  };
+
+  saveBook = (title, author, description, image, info, preview) => {
+    API.saveBook({
+      title: title,
+      author: author,
+      description: description,
+      image: image,
+      info: info,
+      preview: preview,
+    }).catch(err => this.setState({ failed: true }));
+    this.setState({ added: true });
   };
 
   render() {
@@ -52,21 +67,30 @@ class GoogleBooks extends Component {
           </div>
         </Jumbotron>
         <Grid>
+          <Alert style={{ opacity: this.state.added ? 1 : 0 }} type="success">
+            Book added to your saved list
+          </Alert>
+          <Alert style={{ opacity: this.state.failed ? 1 : 0 }} type="danger">
+            Book already added to your saved list
+          </Alert>
           {this.state.books.map(book => {
             if (
               book.searchInfo !== undefined &&
               book.volumeInfo.imageLinks !== undefined
             ) {
               return (
-                <BookCard
-                  key={book}
-                  author={book.volumeInfo.authors[0]}
-                  description={book.searchInfo.textSnippet}
-                  image={book.volumeInfo.imageLinks.thumbnail}
-                  info={book.volumeInfo.infoLink}
-                  preview={book.volumeInfo.previewLink}
-                  title={book.volumeInfo.title}
-                />
+                <div key={book}>
+                  <BookCard
+                    key={book}
+                    author={book.volumeInfo.authors[0]}
+                    description={book.searchInfo.textSnippet}
+                    image={book.volumeInfo.imageLinks.thumbnail}
+                    info={book.volumeInfo.infoLink}
+                    preview={book.volumeInfo.previewLink}
+                    title={book.volumeInfo.title}
+                    saveBook={this.saveBook}
+                  ></BookCard>
+                </div>
               );
             }
           })}

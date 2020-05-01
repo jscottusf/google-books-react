@@ -1,13 +1,26 @@
 import React from 'react';
 import './style.css';
+import { Link } from 'react-router-dom';
 
 function BookCard(props) {
   return (
     <div className="card">
-      <div className="icon">
-        <a href="/save">
-          <i className="fas fa-heart icon save" id="save"></i>
-        </a>
+      <div
+        className="icon"
+        onClick={() =>
+          props.saveBook(
+            props.title,
+            props.author,
+            props.description,
+            props.image,
+            props.info,
+            props.preview
+          )
+        }
+        role="button"
+        tabIndex="0"
+      >
+        <i className="fas fa-heart icon save" id="save"></i>
       </div>
       <div className="card-body">
         <div className="row">

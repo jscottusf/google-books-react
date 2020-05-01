@@ -3,10 +3,21 @@ import Jumbotron from '../components/Jumbotron';
 import Nav from '../components/Nav';
 import Grid from '../components/Grid';
 import BookCard from '../components/BookCard';
+import API from '../utils/API';
 
 class SavedBooks extends Component {
   state = {
     favorites: [],
+  };
+
+  componentDidMount() {
+    this.loadBooks();
+  }
+
+  loadBooks = () => {
+    API.getBooks()
+      .then(res => this.setState({ favorites: res.data }))
+      .catch(err => console.log(err));
   };
 
   render() {
@@ -25,7 +36,17 @@ class SavedBooks extends Component {
           </div>
         </Jumbotron>
         <Grid>
-          <BookCard />
+          {this.state.favorites.map(book => (
+            <BookCard
+              key={book.id}
+              title={book.title}
+              author={book.author}
+              description={book.description}
+              image={book.image}
+              info={book.info}
+              preview={book.preview}
+            />
+          ))}
         </Grid>
       </div>
     );
