@@ -3,7 +3,7 @@ import './style.css';
 
 function SearchBar(props) {
   return (
-    <form className="input-group mb-3 searchbar">
+    <div className="input-group mb-3 searchbar">
       <input
         type="text"
         className="form-control"
@@ -11,7 +11,7 @@ function SearchBar(props) {
         aria-label="search by author or book title"
         aria-describedby="book-search"
         onChange={props.handleInputChange}
-        value={props.searchbar}
+        value={props.search}
       />
       <div className="input-group-append">
         <button
@@ -23,7 +23,7 @@ function SearchBar(props) {
           Find
         </button>
       </div>
-    </form>
+    </div>
   );
 }
 
