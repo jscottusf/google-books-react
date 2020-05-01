@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import GoogleBooks from './pages/GoogleBooks';
-import Books from './pages/Books';
+import SavedBooks from './pages/SavedBooks';
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={GoogleBooks} />
           <Route exact path="/search" component={GoogleBooks} />
-          <Route exact path="/saved" component={Books} />
+          <Route exact path="/saved" component={SavedBooks} />
         </Switch>
       </div>
     </Router>

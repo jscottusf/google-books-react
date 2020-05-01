@@ -3,9 +3,7 @@ import axios from 'axios';
 export default {
   //google book by name
   googleBooks: function (query) {
-    return axios.get(
-      `https://www.googleapis.com/books/v1/volumes?q=${query}&callback=handleResponse`
-    );
+    return axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
   },
   googleBookCategory: function (query) {
     return axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}`);

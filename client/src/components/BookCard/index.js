@@ -1,36 +1,28 @@
 import React from 'react';
 import './style.css';
 
-function BookCard() {
+function BookCard(props) {
   return (
-    <div class="card">
-      <div class="icon">
+    <div className="card">
+      <div className="icon">
         <a href="/save">
-          <i class="fas fa-heart icon save" id="save"></i>
+          <i className="fas fa-heart icon save" id="save"></i>
         </a>
       </div>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-3">
-            <img
-              src="http://books.google.com/books/content?id=sazytgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-              alt="book"
-            />
+      <div className="card-body">
+        <div className="row">
+          <div className="col-3">
+            <img src={props.image} alt={props.title} />
           </div>
-          <div class="col-9">
-            <h5 class="card-title">The Hunger Games</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Suzanne Collins</h6>
-            <div class="card-text mb-1">
-              First in the ground-breaking HUNGER GAMES trilogy. Set in a dark
-              vision of the near future, a terrifying reality TV show is taking
-              place. Twelve boys and twelve girls are forced to appear in a live
-              event called The Hunger Games.
-            </div>
-            <a href="#" class="card-link">
-              Card link
+          <div className="col-9">
+            <h5 className="card-title">{props.title}</h5>
+            <h6 className="card-subtitle mb-2 text-muted">{props.author}</h6>
+            <div className="card-text mb-1">{props.description}</div>
+            <a href={props.info} className="card-link">
+              Info
             </a>
-            <a href="#" class="card-link">
-              Another link
+            <a href={props.preview} className="card-link">
+              Preview
             </a>
           </div>
         </div>

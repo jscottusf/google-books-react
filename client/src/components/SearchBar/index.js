@@ -11,7 +11,7 @@ function SearchBar(props) {
         aria-label="search by author or book title"
         aria-describedby="book-search"
         onChange={props.handleInputChange}
-        value={props.search}
+        value={props.searchbar}
       />
       <div className="input-group-append">
         <button
