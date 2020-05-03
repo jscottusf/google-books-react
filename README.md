@@ -12,7 +12,7 @@ Deployed at: https://googlebooks-js.herokuapp.com/
 
 ![Saved Page](./client/public/saved-page.png)
 
-## Technologies and Dependencies
+## Technologies used
 
 - MongoDB
 - Express.js
