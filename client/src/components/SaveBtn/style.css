@@ -18,3 +18,8 @@
   color: red;
   transition: 1s;
 }
+
+.icon i:active {
+  color: red;
+  transition: 1s;
+}

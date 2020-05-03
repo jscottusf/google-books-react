@@ -5,7 +5,6 @@ import Grid from '../components/Grid';
 import SearchBar from '../components/SearchBar';
 import BookCard from '../components/BookCard';
 import API from '../utils/API';
-import Alert from '../components/Alert';
 import SaveBtn from '../components/SaveBtn';
 
 class GoogleBooks extends Component {
@@ -13,8 +12,6 @@ class GoogleBooks extends Component {
     search: '',
     books: [],
     error: '',
-    added: false,
-    failed: false,
   };
 
   handleInputChange = event => {
@@ -23,9 +20,6 @@ class GoogleBooks extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    // this.setState({
-    //   books: this.state.books.splice(0, this.state.books.length),
-    // });
     API.googleBooks(this.state.search)
       .then(res => {
         if (res.data.status === 'error') {
@@ -44,8 +38,7 @@ class GoogleBooks extends Component {
       image: image,
       info: info,
       preview: preview,
-    }).catch(err => this.setState({ failed: true }));
-    this.setState({ added: true });
+    }).catch(err => console.log(err));
   };
 
   render() {
@@ -67,15 +60,6 @@ class GoogleBooks extends Component {
             </div>
           </div>
         </Jumbotron>
-        <Alert
-          style={{
-            opacity: this.state.added ? 1 : 0,
-            opacity: this.state.failed ? 1 : 0,
-          }}
-          type={this.state.failed ? 'danger' : 'success'}
-        >
-          Book added to your saved list
-        </Alert>
         <Grid>
           {this.state.books.map(book => {
             if (
