@@ -6,11 +6,11 @@ Deployed at: https://googlebooks-js.herokuapp.com/
 
 # Serach Page
 
-![Search Page](./public/search-page.png)
+![Search Page](./client/public/search-page.png)
 
 # Favorites Page
 
-![Saved Page](./public/saved-page.png)
+![Saved Page](./client/public/saved-page.png)
 
 ## Technologies and Dependencies
 
