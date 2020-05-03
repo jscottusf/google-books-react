@@ -4,7 +4,7 @@ MERN stack web app which allows users to find and save books using the google bo
 
 Deployed at: https://googlebooks-js.herokuapp.com/
 
-# Serach Page
+# Search Page
 
 ![Search Page](./client/public/search-page.png)
 
