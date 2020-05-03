@@ -44,19 +44,16 @@ class SavedBooks extends Component {
         </Jumbotron>
         <Grid>
           {this.state.favorites.map(book => (
-            <div className="card">
-              <DeleteBtn />
-              <div key={book}>
+            <div className="card" key={book._id}>
+              <DeleteBtn id={book._id} handleIconClick={this.handleIconClick} />
+              <div>
                 <BookCard
-                  key={book.id}
-                  id={book.id}
                   title={book.title}
                   author={book.author}
                   description={book.description}
                   image={book.image}
                   info={book.info}
                   preview={book.preview}
-                  handleIconClick={this.handleIconClick}
                 ></BookCard>
               </div>
             </div>

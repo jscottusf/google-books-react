@@ -85,7 +85,16 @@ class GoogleBooks extends Component {
             ) {
               return (
                 <div className="card" key={book}>
-                  <SaveBtn handleIconClick={this.handleIconClick} />
+                  <SaveBtn
+                    saveBook={this.handleIconClick}
+                    icon={this.state.icon}
+                    author={book.volumeInfo.authors[0]}
+                    description={book.searchInfo.textSnippet}
+                    image={book.volumeInfo.imageLinks.thumbnail}
+                    info={book.volumeInfo.infoLink}
+                    preview={book.volumeInfo.previewLink}
+                    title={book.volumeInfo.title}
+                  />
                   <div key={book}>
                     <BookCard
                       icon={this.state.icon}
@@ -95,7 +104,7 @@ class GoogleBooks extends Component {
                       info={book.volumeInfo.infoLink}
                       preview={book.volumeInfo.previewLink}
                       title={book.volumeInfo.title}
-                    ></BookCard>
+                    />
                   </div>
                 </div>
               );
