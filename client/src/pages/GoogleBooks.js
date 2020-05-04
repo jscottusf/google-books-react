@@ -15,17 +15,23 @@ class GoogleBooks extends Component {
   };
 
   handleInputChange = event => {
-    this.setState({ search: event.target.value });
+    //setting books to an empty array ensures a clean next search.
+    this.setState({ search: event.target.value, books: [] });
   };
 
   handleFormSubmit = event => {
     event.preventDefault();
+    if (this.state.books) {
+      this.setState({ books: [] });
+    }
     API.googleBooks(this.state.search)
       .then(res => {
         if (res.data.status === 'error') {
           throw new Error(res.data.message);
         }
         this.setState({ books: res.data.items, error: '' });
+        //clearing results...might not be needed but I have been having issues with multple results
+        res.data.items = '';
       })
       .catch(err => this.setState({ error: err.message }));
   };
